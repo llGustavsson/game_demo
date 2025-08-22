@@ -1,0 +1,8 @@
+#Settings
+SCREEN_WIDTH = 800
+SCREEN_HEIGHT = 600
+
+FONT = 'Monospace'
+FONT_SIZE = 48
+
+FPS = 60
