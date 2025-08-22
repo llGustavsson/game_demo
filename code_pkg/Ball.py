@@ -3,7 +3,8 @@ from code_pkg.Const import SCREEN_WIDTH, SCREEN_HEIGHT
 
 class Ball:
     def __init__(self):
-        self.image = pygame.image.load('./asset/ball.png').convert_alpha()
+        load_img = pygame.image.load('./asset/ball.png').convert_alpha()
+        self.image = pygame.transform.scale(load_img, (15, 15))
         self.rect = self.image.get_rect(center=(SCREEN_WIDTH//2, SCREEN_HEIGHT//2))
         self.speed = [4, -4]
 

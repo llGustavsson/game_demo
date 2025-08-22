@@ -3,7 +3,7 @@ import sys
 from code_pkg.Const import SCREEN_WIDTH, SCREEN_HEIGHT, FPS, FONT, FONT_SIZE
 
 class Menu:
-    def __init__(self, screen,):
+    def __init__(self, screen):
         self.screen = screen
         self.font = pygame.font.SysFont(name=FONT, size=FONT_SIZE)
 

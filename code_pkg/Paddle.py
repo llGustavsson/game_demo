@@ -3,7 +3,8 @@ from code_pkg.Const import SCREEN_WIDTH, SCREEN_HEIGHT
 
 class Paddle:
     def __init__(self):
-        self.image = pygame.image.load('./asset/paddle.png').convert_alpha()
+        load_img = pygame.image.load('./asset/paddle.png').convert_alpha()
+        self.image = pygame.transform.scale(load_img, (50, 15))
         self.rect = self.image.get_rect(midbottom=(SCREEN_WIDTH//2, SCREEN_HEIGHT - 40))
         self.speed = 6
 
