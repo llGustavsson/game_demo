@@ -19,6 +19,7 @@ class Menu:
                     if event.key == pygame.K_SPACE:
                         return  # start game
 
+            # Texts Menu
             self.screen.fill((30, 30, 30))
             title_surf = self.font.render("Brick Breaker", True, (255, 255, 255))
             instr_surf = self.font.render("Press SPACE to Play", True, (200, 200, 200))

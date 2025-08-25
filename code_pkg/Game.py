@@ -13,7 +13,8 @@ class Game:
         pygame.display.set_caption("Brick Breaker")
         self.clock = pygame.time.Clock()
         self.font = pygame.font.SysFont(name=FONT, size=FONT_SIZE)
-        # Load a infinite music
+        
+        # Load a music in loop
         pygame.mixer.init()
         pygame.mixer.music.load('./asset/music.mp3')
         pygame.mixer.music.play(-1)
@@ -26,6 +27,25 @@ class Game:
                 y = row * 20
                 bricks.append(Brick((x, y)))
         return bricks
+    
+    def show_victory(self):
+        self.screen.fill((46, 210, 46))
+        title_surf = self.font.render("You WON!", True, (255, 255, 255))
+        instr_surf = self.font.render("Press SPACE to Play", True, (200, 200, 200))
+        self.screen.blit(title_surf, title_surf.get_rect(center=(SCREEN_WIDTH//2, SCREEN_HEIGHT//2 - 40)))
+        self.screen.blit(instr_surf, instr_surf.get_rect(center=(SCREEN_WIDTH//2, SCREEN_HEIGHT//2 + 40)))
+        pygame.display.flip()
+        self.clock.tick(FPS)
+
+        while True:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+                
+                elif event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_SPACE:
+                        return
 
     def reset_game(self):
         self.paddle = Paddle()
@@ -53,9 +73,12 @@ class Game:
                 if self.ball.rect.colliderect(brick.rect):
                     self.bricks.remove(brick)
                     self.ball.speed[1] *= -1
-                    break
+                
+                if not self.bricks:
+                    self.show_victory()
+                    return
 
-            # Ball falls below screen → back to menu
+            # Ball falls below screen - Game Over - back to menu
             if self.ball.rect.bottom >= SCREEN_HEIGHT:
                 while True :
                     self.screen.fill((210, 46, 46))
