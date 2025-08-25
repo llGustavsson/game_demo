@@ -6,3 +6,8 @@ FONT = 'Monospace'
 FONT_SIZE = 48
 
 FPS = 60
+
+PADDLE_SPEED = 6
+
+BALL_SPEED_1 = 4
+BALL_SPEED_2 = -4
